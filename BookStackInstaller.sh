@@ -10,15 +10,15 @@ install_bookstack(){
   git -C /var/www/ clone https://github.com/BookStackApp/BookStack.git --branch release --single-branch
   composer install --no-dev --working-dir=/var/www/BookStack
   mv .env /var/www/BookStack/
-  php artisan key:generate --path=/var/www/BookStack
-  php artisan migrate --path=/var/www/BookStack
+  php /var/www/BookStack/artisan key:generate
+  php /var/www/BookStack/artisan migrate
   chown -R www-data:www-data /var/www/BookStack
   chmod -R 755 /var/www/BookStack
   mv bookstack /etc/nginx/sites-available/
   ln -s /etc/nginx/sites-available/bookstack /etc/nginx/sites-enabled/
   systemctl restart nginx.service
   rm -f /etc/nginx/sites-enabled/default
-  rm -f /etc/nginx/sites-available/default  
+  rm -f /etc/nginx/sites-available/default
 }
 
 install_mariadb(){
@@ -62,17 +62,17 @@ uninstall_php(){
 }
 
 install(){
-  $(install_php)
-  $(install_mariadb)
-  $(install_nginx)
-  $(install_bookstack)
+  install_php
+  install_mariadb
+  install_nginx
+  install_bookstack
 }
 
 uninstall(){
-  $(uninstall_php)
-  $(uninstall_mariadb)
-  $(uninstall_nginx)
-  $(uninstall_bookstack)
+  uninstall_php
+  uninstall_mariadb
+  uninstall_nginx
+  uninstall_bookstack
 }
 
 if [ "$EUID" -ne 0 ] #Check if root
