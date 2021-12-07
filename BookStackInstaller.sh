@@ -61,6 +61,20 @@ uninstall_php(){
   apt autoclean -y
 }
 
+install(){
+  $(install_php)
+  $(install_mariadb)
+  $(install_nginx)
+  $(install_bookstack)
+}
+
+uninstall(){
+  $(uninstall_php)
+  $(uninstall_mariadb)
+  $(uninstall_nginx)
+  $(uninstall_bookstack)
+}
+
 if [ "$EUID" -ne 0 ] #Check if root
   then echo "Please run as root"
   else
