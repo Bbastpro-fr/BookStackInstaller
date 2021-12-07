@@ -16,7 +16,6 @@ install_bookstack(){
   chmod -R 755 /var/www/BookStack
   mv bookstack /etc/nginx/sites-available/
   ln -s /etc/nginx/sites-available/bookstack /etc/nginx/sites-enabled/
-  systemctl restart nginx.service
   rm -f /etc/nginx/sites-enabled/default
   rm -f /etc/nginx/sites-available/default
   systemctl enable nginx.service
