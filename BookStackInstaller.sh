@@ -19,6 +19,7 @@ install_bookstack(){
   systemctl restart nginx.service
   rm -f /etc/nginx/sites-enabled/default
   rm -f /etc/nginx/sites-available/default
+  systemctl enable nginx.service
 }
 
 install_mariadb(){
@@ -29,6 +30,7 @@ install_mariadb(){
   mariadb -u root --execute="GRANT ALL PRIVILEGES ON bookstack.* TO 'bookstack_bot'"
   mariadb -u root --execute="FLUSH PRIVILEGES"
   mysql_secure_installation
+  systemctl enable mariadb.service
 }
 
 install_nginx(){
