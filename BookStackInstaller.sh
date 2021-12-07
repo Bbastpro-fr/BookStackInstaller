@@ -20,6 +20,7 @@ install_bookstack(){
   rm -f /etc/nginx/sites-enabled/default
   rm -f /etc/nginx/sites-available/default
   systemctl enable nginx.service
+  systemctl restart nginx.service
 }
 
 install_mariadb(){
