@@ -3,7 +3,7 @@
 
 install_php(){
   echo "Install php and modules on your system ..."
-  apt install -y -qq php php-common php-curl php-intl php-mbstring php-xml php-mysql php-gd php-cli php-zip php-fpm openssl git
+  apt install -y -qq php php-common php-curl php-intl php-mbstring php-xml php-mysql php-gd php-cli php-zip php-fpm openssl git unzip
 }
 
 install_bookstack(){
